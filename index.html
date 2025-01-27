@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+</head>
+<body>
+    <h1>User Information Form</h1>
+    <form id="userForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="income">Income:</label><br>
+        <input type="number" id="income" name="income" required><br><br>
+        
+        <label for="jobStatus">Job Status:</label><br>
+        <select id="jobStatus" name="jobStatus" required>
+            <option value="employed">Employed</option>
+            <option value="unemployed">Unemployed</option>
+            <option value="student">Student</option>
+        </select><br><br>
+        
+        <input type="button" value="Submit" onclick="submitForm()">
+    </form>
+    <div id="result"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

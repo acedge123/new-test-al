@@ -4,44 +4,40 @@ async function submitForm() {
     const income = document.getElementById('income').value;
     const jobStatus = document.getElementById('jobStatus').value;
 
-    // Display result
+    // Display loading message
     const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = `<h2>User Information</h2>
-                           <p>Name: ${name}</p>
-                           <p>Income: ${income}</p>
-                           <p>Job Status: ${jobStatus}</p>`;
+    resultDiv.innerHTML = `<p>Submitting data...</p>`;
 
-    // Prepare data for API
+    // Prepare data for the API
     const formData = {
         name: name,
         income: income,
-        jobStatus: jobStatus
+        jobStatus: jobStatus,
     };
 
     try {
-        // Send data to API
+        // Make the API request
         const response = await fetch('https://api.homefinancecheck.com/api/v1/leads/', { // Replace with your API endpoint
             method: 'POST',
             headers: {
-                Authorization: Token 9cf28cc76e1099e957a4ba53ccc4510b77e8e832
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Token 9cf28cc76e1099e957a4ba53ccc4510b77e8e832', // Replace YOUR_API_TOKEN with the correct token if needed
             },
-            "answers": {
-        "name": "name",
-        "income": "income",
-        "employed": "jobStatus"
-    }
-}
+            body: JSON.stringify(formData),
         });
 
         if (response.ok) {
             const result = await response.json();
-            resultDiv.innerHTML += `<p>Submission Successful: ${result.message}</p>`;
+            resultDiv.innerHTML = `<p>Submission Successful: ${result.message}</p>`;
         } else {
-            const error = await response.json();
-            resultDiv.innerHTML += `<p>Error: ${error.message}</p>`;
+            const errorData = await response.json();
+            resultDiv.innerHTML = `<p>Submission Failed: ${errorData.message}</p>`;
         }
     } catch (error) {
-        resultDiv.innerHTML += `<p>Unexpected Error: ${error.message}</p>`;
+        resultDiv.innerHTML = `<p>An unexpected error occurred: ${error.message}</p>`;
     }
 }
+
+
+
+

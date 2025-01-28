@@ -1,4 +1,6 @@
-async function submitForm() {
+document.getElementById('userForm').addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent default form submission
+
     // Get form values
     const name = document.getElementById('name').value;
     const income = document.getElementById('income').value;
@@ -8,7 +10,7 @@ async function submitForm() {
     const resultDiv = document.getElementById('result');
     resultDiv.innerHTML = `<p>Submitting data...</p>`;
 
-    // Prepare data for the API
+    // Prepare data for API
     const formData = {
         name: name,
         income: income,
@@ -16,12 +18,12 @@ async function submitForm() {
     };
 
     try {
-        // Make the API request
+        // Send data to API
         const response = await fetch('https://api.homefinancecheck.com/api/v1/leads/', { // Replace with your API endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Token 9cf28cc76e1099e957a4ba53ccc4510b77e8e832', // Replace YOUR_API_TOKEN with the correct token if needed
+                'Authorization': Token 9cf28cc76e1099e957a4ba53ccc4510b77e8e832, // Replace with the correct token
             },
             body: JSON.stringify(formData),
         });
@@ -36,7 +38,7 @@ async function submitForm() {
     } catch (error) {
         resultDiv.innerHTML = `<p>An unexpected error occurred: ${error.message}</p>`;
     }
-}
+});
 
 
 

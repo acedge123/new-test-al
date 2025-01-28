@@ -3,27 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Information Form</title>
+    <title>Submit Form</title>
 </head>
 <body>
-    <h1>User Information Form</h1>
-    <form id="userForm">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
-        
-        <label for="income">Income:</label><br>
-        <input type="number" id="income" name="income" required><br><br>
-        
-        <label for="jobStatus">Job Status:</label><br>
+    <h1>Submit User Information</h1>
+    <form id="userForm" onsubmit="event.preventDefault(); submitForm();">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+
+        <label for="income">Income:</label>
+        <input type="text" id="income" name="income" required>
+        <br><br>
+
+        <label for="jobStatus">Job Status:</label>
         <select id="jobStatus" name="jobStatus" required>
             <option value="employed">Employed</option>
             <option value="unemployed">Unemployed</option>
             <option value="student">Student</option>
-        </select><br><br>
-        
-        <input type="button" value="Submit" onclick="submitForm()">
+        </select>
+        <br><br>
+
+        <button type="submit">Submit</button>
     </form>
+
     <div id="result"></div>
+
+    <script src="submitForm.js"></script>
+</body>
+</html>
 
     <script src="app.js"></script>
 </body>

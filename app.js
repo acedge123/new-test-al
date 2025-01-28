@@ -26,7 +26,12 @@ async function submitForm() {
                 Authorization: Token 9cf28cc76e1099e957a4ba53ccc4510b77e8e832
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formData)
+            "answers": {
+        "name": "name",
+        "income": "income",
+        "employed": "jobStatus"
+    }
+}
         });
 
         if (response.ok) {
